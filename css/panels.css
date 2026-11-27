@@ -1,0 +1,42 @@
+/* ==========================================================
+   PANEL, POST AND MOMENT PAGES
+   ========================================================== */
+
+#view {
+  padding-top: 110px;
+  min-height: 80vh;
+  border-top: 6px solid var(--a);
+}
+
+#view h1 {
+  color: var(--a);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.post {
+  padding: 1rem;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--a);
+}
+
+.post img,
+.media img,
+.media video {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  margin: 0.6rem 0;
+}
+
+.story p {
+  max-width: 46em;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,84 @@
+/* ==========================================================
+   TABLETS AND PHONES
+   (the bottom toolbar itself lives in nav.css)
+   ========================================================== */
+
+@media (max-width: 800px) {
+  .hero,
+  .two,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #globe {
+    width: min(80vw, 400px);
+  }
+
+  .track img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 56px;
+  }
+
+  body {
+    font-size: 16px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .nav {
+    padding: 12px 5vw;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 1rem;
+    padding: 84px 5vw 36px;
+    background:
+      linear-gradient(#14130fe6, #14130fcc),
+      url(../assets/team.jpg) center / cover;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+  }
+
+  .cta {
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  .cta .btn {
+    flex: 1;
+    margin: 0;
+    text-align: center;
+  }
+
+  #globe {
+    width: min(88vw, 380px);
+  }
+
+  .wrap {
+    padding: 52px 5vw;
+  }
+
+  .two {
+    gap: 1.5rem;
+  }
+
+  .card {
+    min-height: 0;
+  }
+
+  #view {
+    padding-top: 84px;
+  }
+
+  .links a {
+    display: inline-block;
+    padding: 0.4em 0;
+  }
+}

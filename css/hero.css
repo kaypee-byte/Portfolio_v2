@@ -1,0 +1,103 @@
+/* ==========================================================
+   HERO: introduction, spinning photo globe, photo strip
+   ========================================================== */
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 110px 5vw 60px;
+  background:
+    linear-gradient(90deg, #14130fe6 25%, #14130f99),
+    url(../assets/team.jpg) center / cover;
+}
+
+.kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+}
+
+.hero h1 {
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+}
+
+.hero h1 span {
+  color: var(--sage);
+}
+
+.role {
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.hero-copy p {
+  max-width: 34em;
+}
+
+/* ---------- Spinning globe (three.js) ---------- */
+
+.globe-wrap {
+  display: grid;
+  justify-items: center;
+}
+
+#globe {
+  width: min(52vw, 640px);
+  aspect-ratio: 1;
+  cursor: grab;
+  touch-action: pan-y;
+  filter: drop-shadow(0 30px 40px #000a);
+}
+
+#globe canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+#globe img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--mute);
+}
+
+/* ---------- Photo strip: moves right to left, forever ---------- */
+
+.strip {
+  overflow: hidden;
+  background: #0c0b09;
+  padding: 14px 0;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide 70s linear infinite;
+}
+
+.track img {
+  height: 220px;
+  width: auto;
+  margin-right: 14px;
+  border-radius: 4px;
+  display: block;
+}
+
+@keyframes slide {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    overflow-x: auto;
+  }
+}

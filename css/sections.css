@@ -1,0 +1,83 @@
+/* ==========================================================
+   SECTIONS: panels cards, about, experience, contact, footer
+   ========================================================== */
+
+.wrap {
+  padding: 80px 5vw;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* ---------- The three panel cards ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  perspective: 900px;
+}
+
+.card {
+  display: block;
+  padding: 1.6rem;
+  min-height: 220px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--a);
+  background: var(--card);
+  box-shadow: 0 12px 30px #0008;
+  transform: rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 22px 40px #000c;
+}
+
+.card h3 {
+  color: var(--a);
+  font-size: 1.7rem;
+}
+
+/* ---------- About / skills / experience ---------- */
+
+.chips {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips li {
+  border: 1px solid var(--line);
+  padding: 0.3em 0.8em;
+}
+
+.entries h3 {
+  font-size: 1.4rem;
+  margin: 1rem 0 0.2rem;
+}
+
+.entries ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+}
+
+/* ---------- Contact and footer ---------- */
+
+.links a {
+  margin-right: 1.2rem;
+}
+
+footer {
+  padding: 2rem 5vw;
+  color: var(--mute);
+  border-top: 1px solid var(--line);
+}

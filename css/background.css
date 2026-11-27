@@ -1,0 +1,56 @@
+/* ==========================================================
+   BACKGROUND: a very slow, seamless drift between the colours
+   and the team photo that the site already uses.
+   Every animation starts and ends on the same state, so the
+   loop never jumps, flashes or resets.
+   ========================================================== */
+
+.bgfx {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #14130f;
+}
+
+.bgfx i {
+  position: absolute;
+  inset: -12%;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.bg-green {
+  background: radial-gradient(ellipse at 18% 25%, #2c3d2e 0, transparent 62%);
+  animation: bg-drift 80s ease-in-out infinite;
+}
+
+.bg-dark {
+  background:
+    radial-gradient(ellipse at 85% 75%, #1d1c16 0, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, #0c0b09 0, transparent 55%);
+  animation: bg-drift 80s ease-in-out -40s infinite;
+}
+
+.bg-photo {
+  background: url(../assets/team.jpg) center / cover;
+  filter: blur(10px) saturate(0.7);
+  animation: bg-photo 80s ease-in-out -20s infinite;
+}
+
+@keyframes bg-drift {
+  0%, 100% {
+    opacity: 0;
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate3d(3%, 2%, 0) scale(1.1);
+  }
+}
+
+@keyframes bg-photo {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.1; }
+}

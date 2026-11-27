@@ -1,0 +1,223 @@
+/* ==========================================================
+   NAVIGATION: top bar (all screens) + bottom toolbar (phones)
+   ========================================================== */
+
+/* ---------- Top bar ---------- */
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 5vw;
+  background: linear-gradient(#14130fcc, #14130f00);
+}
+
+.nav nav {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.brand {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ---------- Bottom toolbar (hidden on large screens) ---------- */
+
+.toolbar,
+.sheet {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .nav {
+    background: #14130ff2;
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav nav {
+    display: none;
+  }
+
+  .toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    background: #14130ff4;
+    border-top: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+
+  .toolbar a,
+  .toolbar button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 54px;
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    color: var(--mute);
+    font: 600 11px/1.1 "Source Sans 3", system-ui, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .toolbar svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .toolbar [aria-current="page"] {
+    color: var(--a);
+  }
+
+  .toolbar [aria-current="page"]::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--a);
+  }
+
+  .toolbar [data-nav="home"] { --a: var(--sage); }
+  .toolbar [data-nav="more"] { --a: var(--sage); }
+  .toolbar [data-nav="cyber"] { --a: var(--cyber); }
+  .toolbar [data-nav="software"] { --a: var(--software); }
+  .toolbar [data-nav="pm"] { --a: var(--pm); }
+}
+
+/* ---------- Menu sheet (slides up from the toolbar) ---------- */
+
+@media (max-width: 760px) {
+  .sheet {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    visibility: hidden;
+    pointer-events: none;
+    transition: visibility 0s 0.28s;
+  }
+
+  .sheet.open {
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  .sheet-backdrop {
+    position: absolute;
+    inset: 0;
+    background: #000a;
+    opacity: 0;
+    transition: opacity 0.28s;
+  }
+
+  .sheet.open .sheet-backdrop {
+    opacity: 1;
+  }
+
+  .sheet-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 20px 5vw calc(24px + env(safe-area-inset-bottom));
+    background: var(--card);
+    border-top: 2px solid var(--sage);
+    border-radius: 18px 18px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.28s ease-out;
+  }
+
+  .sheet.open .sheet-panel {
+    transform: translateY(0);
+  }
+
+  .sheet h2 {
+    font-size: 1.6rem;
+  }
+
+  .sheet-close {
+    position: absolute;
+    top: 12px;
+    right: 4vw;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: none;
+    color: var(--ink);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .sheet-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sheet-links a {
+    display: block;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--a, var(--sage));
+    text-decoration: none;
+    font-weight: 600;
+    background: #ffffff08;
+  }
+
+  .sheet-links .cyber { --a: var(--cyber); }
+  .sheet-links .software { --a: var(--software); }
+  .sheet-links .pm { --a: var(--pm); }
+
+  .sheet-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sheet-social a {
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  body.sheet-open {
+    overflow: hidden;
+  }
+}

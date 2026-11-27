@@ -1,0 +1,144 @@
+/* ==========================================================
+   BASE: colours, reset, typography, buttons, small helpers
+   ========================================================== */
+
+:root {
+  --bg: #14130f;
+  --card: #1d1c16;
+  --ink: #f1efe6;
+  --mute: #b9b5a6;
+  --line: #ffffff24;
+  --sage: #dfeed9;
+  --cyber: #3ddc97;
+  --software: #6cb2ff;
+  --pm: #ffb454;
+  --a: var(--sage); /* accent colour of the current panel */
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 "Source Sans 3", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.brand {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0 0 0.5em;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 3px;
+}
+
+/* ---------- Accessibility helpers ---------- */
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  left: 8px;
+  top: 8px;
+  background: #fff;
+  color: #000;
+  padding: 8px;
+  z-index: 99;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.8em 1.3em;
+  background: var(--ink);
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--ink);
+  margin-right: 0.7rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Small text styles ---------- */
+
+.meta {
+  color: var(--mute);
+  font-size: 0.9rem;
+}
+
+.note {
+  background: #ffffff10;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--a);
+}
+
+.badge {
+  border: 1px solid var(--a);
+  color: var(--a);
+  padding: 0 0.5em;
+  font-size: 0.8rem;
+}
+
+.ph {
+  border: 1px dashed var(--pm);
+  color: var(--pm);
+  padding: 0.3em 0.6em;
+}
+
+/* ---------- Panel accent colours ---------- */
+
+.cyber { --a: var(--cyber); }
+.software { --a: var(--software); }
+.pm { --a: var(--pm); }
+
+/* ---------- Respect "reduce motion" ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

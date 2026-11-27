@@ -1,0 +1,293 @@
+/* ==========================================================
+   MY STORY: the rolling half globe + the moment cards
+   Two layouts share the same parts:
+   .stage.desktop (1000 x 620)   .stage.phone (360 x 250)
+   ========================================================== */
+
+.journey {
+  max-width: 1100px;
+  overflow: hidden; /* clips the fixed-size stage layout, never the visible cards */
+}
+
+.journey h2 {
+  text-align: center;
+}
+
+#jStage {
+  position: relative;
+  width: 100%;
+}
+
+#jScale {
+  margin: 0 auto;
+  transform-origin: 0 0;
+}
+
+.stage {
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.stage.desktop { width: 1000px; height: 620px; }
+.stage.phone { width: 360px; height: 250px; }
+
+/* ---------- Half globe ---------- */
+
+.dome {
+  position: absolute;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  border-radius: var(--domer) var(--domer) 0 0;
+  background-color: var(--bg);
+  background-image:
+    repeating-radial-gradient(circle at 50% 100%, transparent 0 59px, #ffffff10 60px),
+    radial-gradient(ellipse at 50% 100%, #2c3d2e, #14130f 75%);
+  box-shadow:
+    inset 0 0 70px #000,
+    0 0 0 2px var(--sage),
+    0 0 60px #dfeed940;
+}
+
+.floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 2px solid var(--line);
+}
+
+/* Desktop sizes */
+.stage.desktop .dome {
+  left: 200px;
+  top: 220px;
+  width: 600px;
+  height: 300px;
+  --domer: 300px;
+  --domew: 640px;
+  --segw: 440px;
+  --segh: 190px;
+  --segtop: 50%;
+  --font: 16.5px;
+}
+
+.stage.desktop .floor { top: 520px; }
+.stage.desktop .ctrl { top: 545px; }
+
+/* Phone sizes */
+.stage.phone .dome {
+  left: 0;
+  top: 6px;
+  width: 360px;
+  height: 180px;
+  --domer: 180px;
+  --domew: 400px;
+  --segw: 240px;
+  --segh: 104px;
+  --segtop: 56%;
+  --font: 13.5px;
+  background-image:
+    repeating-radial-gradient(circle at 50% 100%, transparent 0 35px, #ffffff10 36px),
+    radial-gradient(ellipse at 50% 100%, #2c3d2e, #14130f 75%);
+}
+
+.stage.phone .floor { top: 186px; }
+.stage.phone .ctrl { top: 200px; }
+
+/* ---------- Surface lines (they roll with the words) ---------- */
+
+.bands {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: 50% var(--segtop, 50%);
+}
+
+.band {
+  position: absolute;
+  left: 50%;
+  top: var(--segtop, 50%);
+  width: var(--domew);
+  height: 3px;
+  margin: -1px 0 0 calc(var(--domew) / -2);
+  backface-visibility: hidden;
+  opacity: 0.25;
+  background: linear-gradient(90deg, transparent, #dfeed9 18%, #dfeed9 82%, transparent);
+}
+
+/* ---------- Words on the globe ---------- */
+
+.drum {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.seg {
+  position: absolute;
+  left: 50%;
+  top: var(--segtop, 50%);
+  width: var(--segw);
+  height: var(--segh);
+  margin: calc(var(--segh) / -2) 0 0 calc(var(--segw) / -2);
+  display: flex;
+  align-items: center;
+  font-size: var(--font);
+  line-height: 1.45;
+  text-align: left;
+  color: var(--ink);
+  backface-visibility: hidden;
+  text-shadow: 0 1px 2px #000, 0 0 10px #000c;
+}
+
+/* ---------- Back / position / forward ---------- */
+
+.ctrl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--mute);
+}
+
+.ctrl .btn {
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+/* ---------- Moment cards around the globe ---------- */
+
+.moment {
+  position: absolute;
+  display: block;
+  width: 140px;
+  cursor: pointer;
+  text-decoration: none;
+  transform: translate(-50%, -50%) rotate(var(--r, 0deg));
+}
+
+.moment .in {
+  display: block;
+  transition: transform 0.25s;
+}
+
+.moment:hover .in,
+.moment:focus-visible .in {
+  transform: translateY(-10px) scale(1.07);
+}
+
+.thumb {
+  display: block;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  background: #222;
+  border: 3px solid var(--sage);
+  border-radius: 6px;
+  box-shadow: 0 16px 28px #000b;
+}
+
+.thumb img,
+.thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+.moment img,
+.moment video {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.nothumb {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.more {
+  display: block;
+  margin-top: 0.45rem;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  color: var(--sage);
+  text-shadow: 0 1px 3px #000, 0 0 8px #000a;
+}
+
+.more b {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.arcbtn {
+  position: absolute;
+  top: 500px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--sage);
+  background: var(--bg);
+  color: var(--sage);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.arcbtn.l { left: 20px; }
+.arcbtn.r { right: 20px; }
+
+/* ---------- Phone: swipeable strip of cards under the globe ---------- */
+
+.strip-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  padding: 1.2rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.strip-row::-webkit-scrollbar {
+  display: none;
+}
+
+.strip-row .moment {
+  position: static;
+  flex: 0 0 140px;
+  width: 140px;
+  transform: none;
+}
+
+/* ---------- Transparent-background media ---------- */
+/* No frame; a light rim and soft shadow keep the subject visible. */
+
+.thumb.keyed {
+  overflow: visible;
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.keyed-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1.5px #dfeed9) drop-shadow(0 10px 14px #000c);
+}
+
+.media .keyed-media {
+  height: auto;
+  max-height: 80vh;
+  margin: 0.6rem 0;
+  object-fit: contain;
+}
