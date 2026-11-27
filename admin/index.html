@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+  <h1>Admin</h1>
+  <p id="msg" role="status"></p>
+
+  <!-- ================= SIGN IN ================= -->
+  <form id="login">
+    <label>Email
+      <input id="em" type="email" autocomplete="username" required>
+    </label>
+    <label>Password
+      <input id="pw" type="password" autocomplete="current-password" required>
+    </label>
+    <button class="btn">Sign in</button>
+  </form>
+
+  <!-- ================= DASHBOARD ================= -->
+  <div id="app" hidden>
+    <p class="note">
+      Before publishing, check every post: no confidential project details,
+      client names, credentials or private data.
+    </p>
+    <button id="out">Sign out</button>
+
+    <!-- ---------- Posts (the three panels) ---------- -->
+    <section>
+      <form id="f">
+        <h2 id="ft">New post</h2>
+        <input type="hidden" id="id">
+
+        <label>Panel
+          <select id="panel">
+            <option value="cyber">Cybersecurity</option>
+            <option value="software">Software engineering</option>
+            <option value="pm">Project management</option>
+          </select>
+        </label>
+        <label>Title <input id="title" required></label>
+        <label>Description <textarea id="desc" rows="6"></textarea></label>
+        <label>Category <input id="cat"></label>
+        <label>Date <input id="date" type="date"></label>
+        <label>Your role <input id="role"></label>
+        <label>Technologies (comma separated) <input id="tech"></label>
+        <label>Links (one per line: Label | https://url)
+          <textarea id="links" rows="3"></textarea>
+        </label>
+        <label>Add photos or videos
+          <input id="files" type="file" accept="image/*,video/*" multiple>
+        </label>
+        <p id="cur" class="meta"></p>
+        <label>Status
+          <select id="status">
+            <option value="draft">Draft (hidden)</option>
+            <option value="published">Published</option>
+          </select>
+        </label>
+
+        <button class="btn">Save post</button>
+        <button type="button" id="new">Clear form</button>
+      </form>
+
+      <h2>Posts</h2>
+      <div id="list"></div>
+    </section>
+
+    <!-- ---------- My story: moments ---------- -->
+    <section>
+      <h2>My story: moments (the cards around the globe)</h2>
+      <form id="mf">
+        <input type="hidden" id="mid">
+
+        <label>Title <input id="mt" required></label>
+        <label>Button text under the picture (for example: Read more, Explore this moment)
+          <input id="mc" value="Read the story">
+        </label>
+        <label>Date <input id="md" type="date"></label>
+        <label>Order on the arc (1 = first) <input id="mo" type="number" value="1"></label>
+        <label>The full story of this moment (as long as you like; blank line between paragraphs)
+          <textarea id="ms" rows="14"></textarea>
+        </label>
+        <label>Photos or videos (the first one is the picture on the card)
+          <input id="mfiles" type="file" accept="image/*,video/*" multiple>
+        </label>
+        <p id="mcur" class="meta"></p>
+        <label>
+          <input type="checkbox" id="mkey" checked>
+          Make a solid black background transparent (only if the photo or video
+          really has one; your original file is never changed)
+        </label>
+        <label>Links (one per line: Label | https://url)
+          <textarea id="ml" rows="2"></textarea>
+        </label>
+        <label>Status
+          <select id="mst">
+            <option value="draft">Draft (hidden)</option>
+            <option value="published">Published</option>
+          </select>
+        </label>
+
+        <button class="btn">Save moment</button>
+        <button type="button" id="mnew">Clear form</button>
+      </form>
+      <div id="mlist"></div>
+    </section>
+
+    <!-- ---------- Site content ---------- -->
+    <section>
+      <h2>Site content</h2>
+      <p class="meta">
+        Everything on the public page is edited here. The boxes start with the
+        built-in text; change it and press Save.
+      </p>
+      <form id="sf">
+        <label>Story title <input id="s_journeyTitle"></label>
+        <label>Your story, shown on the half globe (blank line between paragraphs; **bold** works)
+          <textarea id="s_journey" rows="18"></textarea>
+        </label>
+        <label>About (blank line between paragraphs)
+          <textarea id="s_about" rows="6"></textarea>
+        </label>
+        <label>Skills (one per line) <textarea id="s_skills" rows="5"></textarea></label>
+        <label>Languages (one per line) <textarea id="s_languages" rows="2"></textarea></label>
+        <label>Interests (one per line) <textarea id="s_interests" rows="3"></textarea></label>
+        <label>Experience (each entry: line 1 title, line 2 place, then one bullet per line;
+          blank line between entries)
+          <textarea id="s_experience" rows="10"></textarea>
+        </label>
+        <label>Education (same format as experience)
+          <textarea id="s_education" rows="4"></textarea>
+        </label>
+        <button class="btn">Save site content</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="../js/defaults.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="admin-common.js"></script>
+  <script src="admin-posts.js"></script>
+  <script src="admin-moments.js"></script>
+  <script src="admin-site.js"></script>
+  <script src="admin-main.js"></script>
+</body>
+</html>
