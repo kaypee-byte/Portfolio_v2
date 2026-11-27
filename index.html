@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14130f">
+  <meta name="description"
+        content="Project manager, software engineer and ethical hacking learner in Empangeni, South Africa.">
+  <link rel="icon" href="data:,">
+  <title>Kwanele P. Ntshalintshali | Portfolio</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/panels.css">
+  <link rel="stylesheet" href="css/story.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body>
+  <!-- Slowly drifting background (see css/background.css) -->
+  <div class="bgfx" aria-hidden="true">
+    <i class="bg-green"></i>
+    <i class="bg-dark"></i>
+    <i class="bg-photo"></i>
+  </div>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="nav">
+    <a class="brand" href="#/">Kwanele</a>
+    <nav aria-label="Main">
+      <a href="#/panel/cyber">Cybersecurity</a>
+      <a href="#/panel/software">Software</a>
+      <a href="#/panel/pm">Projects</a>
+      <a href="#about">About</a>
+      <a href="#timeline">My story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HOME ================= -->
+    <div id="home">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Personal portfolio, Empangeni, South Africa</p>
+          <h1>Hi, I’m<br><span>Kwanele.</span></h1>
+          <p class="role">Project manager &amp; software engineer</p>
+          <p>
+            I coordinate project work, build websites and software, and keep
+            learning about cybersecurity and ethical hacking.
+          </p>
+          <p class="cta">
+            <a class="btn" href="#panels">My work</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </p>
+        </div>
+
+        <div class="globe-wrap">
+          <div id="globe" role="img"
+               aria-label="A spinning 3D globe covered in my photos, with photos orbiting it">
+            <img src="assets/photos/01.webp" alt="Kwanele">
+          </div>
+          <noscript><p>Please enable JavaScript to see the 3D globe.</p></noscript>
+          <p class="hint">Spinning with my own photos. Drag to turn it.</p>
+        </div>
+      </section>
+
+      <!-- Photo strip -->
+      <section class="strip" aria-label="Photos of Kwanele">
+        <div class="track" id="track"></div>
+      </section>
+
+      <!-- The three panels -->
+      <section id="panels" class="wrap">
+        <h2>Three things I work on</h2>
+        <div class="cards">
+          <a class="card cyber" href="#/panel/cyber">
+            <h3>Cybersecurity</h3>
+            <p>Ethical hacking labs, CTF write-ups and secure-by-design notes. Educational only.</p>
+          </a>
+          <a class="card software" href="#/panel/software">
+            <h3>Software engineering</h3>
+            <p>Websites and software I have built, with progress and lessons learned.</p>
+          </a>
+          <a class="card pm" href="#/panel/pm">
+            <h3>Project management</h3>
+            <p>Planning, milestones and teamwork, including my work as Project Manager at Beacon Innovation Hub.</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- About (filled by js/profile.js) -->
+      <section id="about" class="wrap two">
+        <div>
+          <h2>About</h2>
+          <div id="aboutText"></div>
+        </div>
+        <div>
+          <h2>Skills</h2>
+          <ul class="chips" id="skillsList"></ul>
+          <h2>Languages</h2>
+          <ul class="chips" id="langList"></ul>
+        </div>
+      </section>
+
+      <!-- Experience and education (filled by js/profile.js) -->
+      <section id="experience" class="wrap two">
+        <div>
+          <h2>Experience</h2>
+          <div class="entries" id="expList"></div>
+        </div>
+        <div>
+          <h2>Education</h2>
+          <div class="entries" id="eduList"></div>
+          <h2>Interests</h2>
+          <ul class="chips" id="intList"></ul>
+        </div>
+      </section>
+
+      <!-- My story: rolling half globe + moment cards (js/journey.js) -->
+      <section id="timeline" class="wrap journey">
+        <h2 id="jTitle">My story</h2>
+        <div id="jStage"></div>
+        <div class="sr-only" id="jFull"></div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="wrap">
+        <h2>Contact</h2>
+        <p><a href="mailto:kpmalekwanele@gmail.com">kpmalekwanele@gmail.com</a></p>
+        <p class="links">
+          <a href="https://github.com/kaypee-byte" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/kwanele-ntshalintshali-8764363b4"
+             rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/kai_m3ch/" rel="noopener">Instagram</a>
+        </p>
+      </section>
+    </div>
+
+    <!-- Panel, post and moment pages are drawn here (js/views.js) -->
+    <section id="view" class="wrap" hidden></section>
+  </main>
+
+  <footer>© Kwanele P. Ntshalintshali</footer>
+
+  <!-- ================= PHONE TOOLBAR ================= -->
+  <nav class="toolbar" id="toolbar" aria-label="Quick navigation">
+    <a href="#/" data-nav="home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#/panel/cyber" data-nav="cyber">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+      <span>Cyber</span>
+    </a>
+    <a href="#/panel/software" data-nav="software">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
+      <span>Software</span>
+    </a>
+    <a href="#/panel/pm" data-nav="pm">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v12H3zM9 8V5h6v3M3 13h18"/></svg>
+      <span>Projects</span>
+    </a>
+    <button type="button" id="menuBtn" data-nav="more"
+            aria-expanded="false" aria-controls="sheet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <span>Menu</span>
+    </button>
+  </nav>
+
+  <!-- Menu sheet: every page and link -->
+  <div class="sheet" id="sheet" role="dialog" aria-label="All pages" aria-hidden="true">
+    <div class="sheet-backdrop" data-close></div>
+    <div class="sheet-panel">
+      <button type="button" class="sheet-close" data-close aria-label="Close menu">✕</button>
+      <h2>Menu</h2>
+      <ul class="sheet-links">
+        <li><a href="#/">Home</a></li>
+        <li><a class="cyber" href="#/panel/cyber">Cybersecurity</a></li>
+        <li><a class="software" href="#/panel/software">Software</a></li>
+        <li><a class="pm" href="#/panel/pm">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#timeline">My story</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="sheet-social">
+        <a href="https://github.com/kaypee-byte" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/kwanele-ntshalintshali-8764363b4" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/kai_m3ch/" rel="noopener">Instagram</a>
+        <a href="mailto:kpmalekwanele@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: show your own video on the hero globe (see README) -->
+  <!-- <script>window.SITE_VIDEO = "assets/video/hero.mp4";</script> -->
+
+  <!-- Libraries and data -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="config.js"></script>
+  <script src="assets/photos-data.js"></script>
+  <script src="js/defaults.js"></script>
+  <script src="js/moments-data.js"></script>
+
+  <!-- Site code (order matters) -->
+  <script src="js/utils.js"></script>
+  <script src="js/transparent.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/photo-strip.js"></script>
+  <script src="js/hero-globe.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/moments.js"></script>
+  <script src="js/story-dome.js"></script>
+  <script src="js/journey.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/toolbar.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
